@@ -22,16 +22,55 @@
         [
             "titulo" => "Meu portifólio",
             "finalizado" => false,
-            "data" => "2024-10-16",
+            "ano" => 2025,
             "descricao" => "Meu primeiro portifólio em php e html",
         ],
         [
             "titulo" => "Lista de Tarefas",
-            "finalizado" => true,
-            "data" => "2024-05-16",
+            "finalizado" => false,
+            "ano" => 2024,
             "descricao" => "Minha lista de tarefas",
-        ]
+        ],
+        [
+            "titulo" => "Controle de livros",
+            "finalizado" => true,
+            "ano" => 2024,
+            "descricao" => "Minha lista de controle de livros",
+        ],
+        [
+            "titulo" => "Painel de filmes",
+            "finalizado" => false,
+            "ano" => 2025,
+            "descricao" => "Minha lista de filmes",
+        ],
     ];
+
+    function verificarSeEstaFinalizado($projeto)
+    {
+        if ($projeto['finalizado']) {
+            return '<span style="color:green"> ✅ Finalizado</span>';
+        } else {
+            return '<span style="color:red"> 🛑 Não Finalizado</span>';
+        }
+    }
+
+
+    function filtro($itens, $funcao)
+    {
+        $filtros = [];
+
+        foreach ($itens as $item) {
+            if ($funcao($item)) {
+                $filtros[] = $item;
+            }
+        }
+        return $filtros;
+    };
+
+    $projetosFiltrados = filtro($projetos, function ($projeto) {
+        return $projeto['ano'] > 2024;
+    });
+
     ?>
 
     <h1><?php echo $titulo ?></h1>
@@ -41,22 +80,19 @@
     </hr>
 
     <ul>
-        <?php foreach ($projetos as $projeto): ?>
+        <?php foreach ($projetosFiltrados as $projeto): ?>
 
+        <div>
+            <h2><?php echo $projeto['titulo'] ?></h2>
+            <p><?php echo $projeto['descricao'] ?></p>
             <div>
-                <h2><?php echo $projeto['titulo'] ?></h2>
-                <p><?php echo $projeto['descricao'] ?></p>
-                <div>
-                    <div><?php echo $projeto['data'] ?></div>
-                    <div>Projeto:
-                        <?php if ($projeto['finalizado']): ?>
-                            <span style="color:green"> ✅ Finalizado</span>
-                        <?php else: ?>
-                            <span style="color:red"> 🛑 Não Finalizado</span>
-                        <?php endif; ?>
-                    </div>
+                <div><?php echo $projeto['ano'] ?></div>
+                <div>Projeto:
+
+                    <?php echo verificarSeEstaFinalizado($projeto) ?>
                 </div>
             </div>
+        </div>
 
         <?php endforeach; ?>
 
