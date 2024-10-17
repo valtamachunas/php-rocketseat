@@ -54,20 +54,7 @@
         }
     }
 
-
-    function filtro($itens, $funcao)
-    {
-        $filtros = [];
-
-        foreach ($itens as $item) {
-            if ($funcao($item)) {
-                $filtros[] = $item;
-            }
-        }
-        return $filtros;
-    };
-
-    $projetosFiltrados = filtro($projetos, function ($projeto) {
+    $projetosFiltrados = array_filter($projetos, function ($projeto) {
         return $projeto['ano'] > 2024;
     });
 
