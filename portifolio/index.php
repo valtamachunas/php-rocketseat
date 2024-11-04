@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meu Portifólio</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css"
+        integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
 </head>
 
 <body>
@@ -24,6 +26,7 @@
             "finalizado" => false,
             "ano" => 2025,
             "descricao" => "Meu primeiro portifólio em php e html",
+            "stack" => ["PHP", "HTML", "CSS"]
         ],
         [
             "titulo" => "Lista de Tarefas",
@@ -69,17 +72,17 @@
     <ul>
         <?php foreach ($projetosFiltrados as $projeto): ?>
 
-        <div>
-            <h2><?php echo $projeto['titulo'] ?></h2>
-            <p><?php echo $projeto['descricao'] ?></p>
             <div>
-                <div><?php echo $projeto['ano'] ?></div>
-                <div>Projeto:
+                <h2><?php echo $projeto['titulo'] ?></h2>
+                <p><?php echo $projeto['descricao'] ?></p>
+                <div>
+                    <div><?php echo $projeto['ano'] ?></div>
+                    <div>Projeto:
 
-                    <?php echo verificarSeEstaFinalizado($projeto) ?>
+                        <?php echo verificarSeEstaFinalizado($projeto) ?>
+                    </div>
                 </div>
             </div>
-        </div>
 
         <?php endforeach; ?>
 
