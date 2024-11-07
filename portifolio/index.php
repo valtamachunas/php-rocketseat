@@ -5,91 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meu Portifólio</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css"
-        integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
-    <?php
-    $nome = "Valeska";
-    $saudacao = "Olá";
-    $titulo = $saudacao . " Portifólio da " . $nome;
-    $subtitulo = "Meu portifólio";
-    $ano = 2024;
-    $projeto = "Meu Portifólio";
-    $finalizado = true;
-    $dataDoProjeto = "2024-10-16";
-    $descricao = "Meu primeiro portifólio em php e html";
-    $projetos = [
-        [
-            "titulo" => "Meu portifólio",
-            "finalizado" => false,
-            "ano" => 2025,
-            "descricao" => "Meu primeiro portifólio em php e html",
-            "stack" => ["PHP", "HTML", "CSS"]
-        ],
-        [
-            "titulo" => "Lista de Tarefas",
-            "finalizado" => false,
-            "ano" => 2024,
-            "descricao" => "Minha lista de tarefas",
-        ],
-        [
-            "titulo" => "Controle de livros",
-            "finalizado" => true,
-            "ano" => 2024,
-            "descricao" => "Minha lista de controle de livros",
-        ],
-        [
-            "titulo" => "Painel de filmes",
-            "finalizado" => false,
-            "ano" => 2025,
-            "descricao" => "Minha lista de filmes",
-        ],
-    ];
+<body class="bg-slate-800 text-white">
 
-    function verificarSeEstaFinalizado($projeto)
-    {
-        if ($projeto['finalizado']) {
-            return '<span style="color:green"> ✅ Finalizado</span>';
-        } else {
-            return '<span style="color:red"> 🛑 Não Finalizado</span>';
-        }
-    }
+    <?php include('./componentes/header.php'); ?>
 
-    $projetosFiltrados = array_filter($projetos, function ($projeto) {
-        return $projeto['ano'] > 2024;
-    });
+    <main class="mx-auto max-w-screen-lg min-h-20 px-3 py-6">
 
-    ?>
+        <?php include('./componentes/hero.php') ?>
 
-    <h1><?php echo $titulo ?></h1>
-    <p><?php echo $subtitulo ?></p>
-    <p><?php echo $ano ?></p>
-    <hr>
-    </hr>
+        <section id="projetos" class="space-y-3 py-6">
+            <h2 class="text-2xl font-bold">Meus Projetos</h2>
 
-    <ul>
-        <?php foreach ($projetosFiltrados as $projeto): ?>
+            <?php include('./componentes/projetos.php') ?>
 
-            <div>
-                <h2><?php echo $projeto['titulo'] ?></h2>
-                <p><?php echo $projeto['descricao'] ?></p>
-                <div>
-                    <div><?php echo $projeto['ano'] ?></div>
-                    <div>Projeto:
+        </section>
+    </main>
 
-                        <?php echo verificarSeEstaFinalizado($projeto) ?>
-                    </div>
-                </div>
-            </div>
-
-        <?php endforeach; ?>
-
-
-
-    </ul>
-
+    <footer class="mx-auto max-w-screen-lg min-h-20">
+        <div class="border-t border-pink-600 pt-6 px-3 text-sm opacity-70">
+            © Copyright <?php echo date('Y') ?>. Construído ♡ por mim mesmo :) .
+        </div>
+    </footer>
 
 </body>
 
