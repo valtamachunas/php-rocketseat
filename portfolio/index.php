@@ -4,15 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Portifólio</title>
+    <title>Meu Portfólio</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-slate-800 text-white">
+<body class="bg-gray-950 text-white">
 
     <?php include('./componentes/header.php'); ?>
 
-    <main class="mx-auto max-w-screen-lg min-h-20 px-3 py-6">
+    <main class="bg-gray-900 rounded-lg mx-auto max-w-screen-lg min-h-20 px-3 py-6">
 
         <?php include('./componentes/hero.php') ?>
 
